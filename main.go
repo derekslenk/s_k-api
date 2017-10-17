@@ -27,11 +27,11 @@ func main() {
 	yaag.Init(&yaag.Config{On: false, DocTitle: "s_k-api", DocPath: "apidoc.html", BaseUrls: map[string]string{"Production": "https://steve-and-kyle.appspot.com", "Staging": "iCantAffordThat.sorry"}})
 
 	r := mux.NewRouter()
-	r.HandleFunc("/episodes", middleware.HandleFunc(AllEps))
-	r.HandleFunc("/episode", middleware.HandleFunc(AllEps))
-	r.HandleFunc("/episode/{id}", middleware.HandleFunc(SingleEpisode))
-	r.HandleFunc("/stats", middleware.HandleFunc(StatsIndex))
-	r.HandleFunc("/", middleware.HandleFunc(Index))
+	r.HandleFunc("/api/episodes", middleware.HandleFunc(AllEps))
+	r.HandleFunc("/api/episode", middleware.HandleFunc(AllEps))
+	r.HandleFunc("/api/episode/{id}", middleware.HandleFunc(SingleEpisode))
+	r.HandleFunc("/api/stats", middleware.HandleFunc(StatsIndex))
+	r.HandleFunc("/api", middleware.HandleFunc(Index))
 	fmt.Println("Routes set up")
 	// Catches anything left
 	http.Handle("/", r)
