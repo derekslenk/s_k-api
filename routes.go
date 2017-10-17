@@ -3,8 +3,6 @@ package main
 import (
 	"fmt"
 	"net/http"
-
-	"github.com/derekslenk/gomodels"
 )
 
 // Route defines our structure for the class
@@ -23,7 +21,7 @@ type Routes []Route
 func Index(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Fprintln(w, "Steve and Kyle Podcast: #api")
-	fmt.Fprintln(w, "Number of episodes in database:", models.EpCount())
+	fmt.Fprintln(w, "Number of episodes in database:", EpCount())
 	fmt.Fprintln(w, "Created by Derek Slenk")
 	fmt.Println("Endpoint Hit: Index")
 }
