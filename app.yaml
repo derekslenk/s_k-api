@@ -1,0 +1,10 @@
+api_version: go1.8
+env: flex
+env_variables:
+  MYSQL_CONNECTION: "username:password@tcp(host.com:3306)/database"
+runtime: go
+manual_scaling:
+  instances: 1
+handlers:
+  - url: /.*
+    script: _go_app

@@ -1,0 +1,14 @@
+[
+  {
+    "context": {
+      "git": {
+        "revisionId": "320e65b9f34ced334e1ab061ae3c47ea37b683ca", 
+        "url": "ssh://git@bitbucket.org/slenk/s_k-api.git"
+      }
+    }, 
+    "labels": {
+      "category": "remote_repo", 
+      "remote_name": "origin"
+    }
+  }
+]
