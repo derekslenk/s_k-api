@@ -118,7 +118,7 @@ func SpecialEpCount() (count int) {
 
 // AvgLength returns the average length over all episodes (in seconds)
 func AvgLength() (length int) {
-	rows, err := db.Query("SELECT ROUND(AVG(duration_seconds),0) FROM episodes WHERE special = false")
+	rows, err := db.Query("SELECT ROUND((AVG(duration_seconds) / 60) ,0)  FROM episodes WHERE special = false")
 	if err != nil {
 		panic(err)
 	} else {
@@ -137,7 +137,7 @@ func AvgLength() (length int) {
 
 // AvgLengthSpecial returns the average length over all episodes (in seconds)
 func AvgLengthSpecial() (length int) {
-	rows, err := db.Query("SELECT ROUND(AVG(duration_seconds),0) FROM episodes")
+	rows, err := db.Query("SELECT ROUND((AVG(duration_seconds) / 60) ,0) FROM episodes")
 	if err != nil {
 		panic(err)
 	} else {

@@ -27,11 +27,12 @@ func main() {
 	yaag.Init(&yaag.Config{On: false, DocTitle: "s_k-api", DocPath: "apidoc.html", BaseUrls: map[string]string{"Production": "https://steve-and-kyle.appspot.com", "Staging": "iCantAffordThat.sorry"}})
 
 	r := mux.NewRouter()
-	r.HandleFunc("/episodes", middleware.HandleFunc(AllEps))
-	r.HandleFunc("/episode", middleware.HandleFunc(AllEps))
-	r.HandleFunc("/episode/{id}", middleware.HandleFunc(SingleEpisode))
-	r.HandleFunc("/stats", middleware.HandleFunc(StatsIndex))
-	r.HandleFunc("/", middleware.HandleFunc(Index))
+	s := r.PathPrefix("/api/").Subrouter()
+	s.HandleFunc("/episodes", middleware.HandleFunc(AllEps))
+	s.HandleFunc("/episode", middleware.HandleFunc(AllEps))
+	s.HandleFunc("/episode/{id}", middleware.HandleFunc(SingleEpisode))
+	s.HandleFunc("/stats", middleware.HandleFunc(StatsIndex))
+	s.HandleFunc("/", middleware.HandleFunc(Index))
 	fmt.Println("Routes set up")
 	// Catches anything left
 	http.Handle("/", r)
@@ -42,5 +43,6 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("Listening on port 8001")
 
 }
